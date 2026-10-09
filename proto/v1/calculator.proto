@@ -1,0 +1,21 @@
+syntax = "proto3";
+package calculator;
+
+option go_package = "github/ronmandeles/gRPC-Calculator/pkg/pb";
+
+message OpRequest {
+    int32 num1 = 1;
+    int32 num2 = 2;
+}
+
+message OpResponse {
+    int32 result = 1;
+}
+
+service Calculator {
+    rpc Add (OpRequest) returns (OpResponse) {}
+    rpc Div (OpRequest) returns (OpResponse) {}
+    rpc Mul (OpRequest) returns (OpResponse) {}
+    rpc Sub (OpRequest) returns (OpResponse) {}
+    
+}
