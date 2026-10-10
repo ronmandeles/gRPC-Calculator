@@ -36,13 +36,13 @@ func (s *server) Sub(ctx context.Context, req *pb.OpRequest) (*pb.OpResponse, er
 func main() {
 	lis, err := net.Listen("tcp", ":9001")
 	if err != nil {
-		log.Printf("Failed to listen, %v", err)
+		log.Fatalf("Failed to listen, %v", err)
 	}
 
 	grpc_server := grpc.NewServer()
 	pb.RegisterCalculatorServer(grpc_server, &server{})
 	if err := grpc_server.Serve(lis); err != nil {
-		log.Printf("failed to server, %v", err)
+		log.Fatalf("failed to server, %v", err)
 	}
 
 }
