@@ -1,11 +1,12 @@
 syntax = "proto3";
 package calculator;
 
-option go_package = "github/ronmandeles/gRPC-Calculator/pkg/pb";
+option go_package = "github.com/ronmandeles/gRPC-Calculator/pkg/pb/v1;pb";
 
 message OpRequest {
     int32 num1 = 1;
     int32 num2 = 2;
+    string operation = 3;
 }
 
 message OpResponse {
