@@ -7,12 +7,11 @@
 package pb
 
 import (
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
-
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 )
 
 const (
@@ -26,7 +25,6 @@ type OpRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Num1          int32                  `protobuf:"varint,1,opt,name=num1,proto3" json:"num1,omitempty"`
 	Num2          int32                  `protobuf:"varint,2,opt,name=num2,proto3" json:"num2,omitempty"`
-	Operation     string                 `protobuf:"bytes,3,opt,name=operation,proto3" json:"operation,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -73,13 +71,6 @@ func (x *OpRequest) GetNum2() int32 {
 		return x.Num2
 	}
 	return 0
-}
-
-func (x *OpRequest) GetOperation() string {
-	if x != nil {
-		return x.Operation
-	}
-	return ""
 }
 
 type OpResponse struct {
@@ -131,11 +122,10 @@ var File_calculator_proto protoreflect.FileDescriptor
 const file_calculator_proto_rawDesc = "" +
 	"\n" +
 	"\x10calculator.proto\x12\n" +
-	"calculator\"Q\n" +
+	"calculator\"3\n" +
 	"\tOpRequest\x12\x12\n" +
 	"\x04num1\x18\x01 \x01(\x05R\x04num1\x12\x12\n" +
-	"\x04num2\x18\x02 \x01(\x05R\x04num2\x12\x1c\n" +
-	"\toperation\x18\x03 \x01(\tR\toperation\"$\n" +
+	"\x04num2\x18\x02 \x01(\x05R\x04num2\"$\n" +
 	"\n" +
 	"OpResponse\x12\x16\n" +
 	"\x06result\x18\x01 \x01(\x05R\x06result2\xec\x01\n" +

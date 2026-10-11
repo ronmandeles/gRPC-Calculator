@@ -7,6 +7,8 @@ import (
 
 	pb "github.com/ronmandeles/gRPC-Calculator/pkg/pb/v1"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 type server struct {
@@ -19,6 +21,9 @@ func (s *server) Add(ctx context.Context, req *pb.OpRequest) (*pb.OpResponse, er
 }
 
 func (s *server) Div(ctx context.Context, req *pb.OpRequest) (*pb.OpResponse, error) {
+	if req.Num2 == 0 {
+		return &pb.OpResponse{}, status.Error(codes.InvalidArgument, "cant divide by zero")
+	}
 	res := req.Num1 / req.Num2
 	return &pb.OpResponse{Result: res}, nil
 }
